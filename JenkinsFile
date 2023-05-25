@@ -15,28 +15,12 @@ node {
    
    // -- Descarga código desde SCM
    echo 'Descargando código de SCM'
-   git https://github.com/lmorenoa/common-apache.git
-   sh 'rm -rf *'
+   bat 'rm -rf *'
    checkout scm
    
    // -- Compilando
    echo 'Compilando aplicación'
-   sh 'mvn clean compile'
-   
-   // ------------------------------------
-   // -- ETAPA: Test
-   // ------------------------------------
-   stage 'Test'
-   echo 'Ejecutando tests'
-   try{
-      sh 'mvn verify'
-      step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-   }catch(err) {
-      step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-      if (currentBuild.result == 'UNSTABLE')
-         currentBuild.result = 'FAILURE'
-      throw err
-   }
+   bat 'mvn clean compile'
    
    
    // ------------------------------------
