@@ -15,12 +15,12 @@ node {
    
    // -- Descarga código desde SCM
    echo 'Descargando código de SCM'
-   bat 'rm -rf *'
+   sh 'rm -rf *'
    checkout scm
    
    // -- Compilando
    echo 'Compilando aplicación'
-   bat 'mvn clean compile'
+   sh 'mvn clean compile'
    
    
    // ------------------------------------
