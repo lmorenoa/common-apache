@@ -15,6 +15,7 @@ node {
    
    // -- Descarga código desde SCM
    echo 'Descargando código de SCM'
+   git https://github.com/lmorenoa/common-apache.git
    sh 'rm -rf *'
    checkout scm
    
